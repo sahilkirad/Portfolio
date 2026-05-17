@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Sahil Kirad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar" data-navbar><div class="container nav-inner"><nav class="nav-links"><a class="nav-link" data-nav href="index.html">Home</a><a class="nav-link" data-nav href="projects.html">Projects</a><a class="nav-link" data-nav href="experience.html">Experience</a><a class="nav-link" data-nav href="achievements.html">Achievements</a><a class="nav-link" data-nav href="contact.html">Contact</a></nav><div class="nav-actions"><a class="btn btn-white" href="assets/Sahil_Kirad_resume.pdf" download>Resume</a><button class="menu-btn" data-menu-btn aria-label="Toggle navigation" aria-expanded="false"><i class="ti ti-menu-2"></i></button></div><div class="mobile-menu" data-mobile-menu><a data-nav href="index.html">Home</a><a data-nav href="projects.html">Projects</a><a data-nav href="experience.html">Experience</a><a data-nav href="achievements.html">Achievements</a><a data-nav href="contact.html">Contact</a><a class="btn btn-white" href="assets/Sahil_Kirad_resume.pdf" download>Resume</a></div></div></header>
+  <main class="main-offset">
+    <section class="page-header"><div class="container fade-up"><h1>Get in Touch</h1><p>Let's connect and collaborate</p></div></section>
+    <section class="section"><div class="container contact-grid">
+      <article class="card fade-up">
+        <h2 class="section-title" style="font-size:2rem;">Contact Info</h2>
+        <div class="info-list" style="margin-top:16px;">
+          <div class="info-item"><i class="ti ti-mail"></i><a href="mailto:kiradsahil882@gmail.com">kiradsahil882@gmail.com</a></div>
+          <div class="info-item"><i class="ti ti-phone"></i>+91 80804 01915</div>
+          <div class="info-item"><i class="ti ti-map-pin"></i>Pune, Maharashtra, India</div>
+        </div>
+        <hr class="divider" />
+        <div class="social-row"><a class="social-btn" href="https://www.linkedin.com/in/sahil-kirad-288ab228a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a><a class="social-btn" href="https://github.com/sahilkirad" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ti ti-brand-github"></i></a></div>
+      </article>
+
+      <article class="card fade-up">
+        <!-- 
+          EMAILJS SETUP:
+          1. Go to https://emailjs.com and create a free account
+          2. Add a Gmail service and connect kiradsahil882@gmail.com
+          3. Create an email template use variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
+          4. Replace YOUR_EMAILJS_PUBLIC_KEY with your Public Key (Account > API Keys)
+          5. Replace YOUR_SERVICE_ID with your Service ID
+          6. Replace YOUR_TEMPLATE_ID with your Template ID
+        -->
+        <h2 class="section-title" style="font-size:2rem;">Send a Message</h2>
+        <form id="contactForm" class="form-grid" style="margin-top:16px;">
+          <input id="name" class="input" type="text" placeholder="Name" />
+          <input id="email" class="input" type="email" placeholder="Email" />
+          <input id="subject" class="input" type="text" placeholder="Subject" />
+          <textarea id="message" class="input" placeholder="Message"></textarea>
+          <p id="formError" class="error-text">Please fill in all fields.</p>
+          <button id="submitBtn" class="btn btn-dark" type="submit">Send Message ?</button>
+        </form>
+      </article>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><div class="footer-links"><a href="https://www.linkedin.com/in/sahil-kirad-288ab228a" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/sahilkirad" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:kiradsahil882@gmail.com">Email</a></div><p class="footer-copy">2026 Sahil Kirad. All rights reserved.</p></div></footer>
+  <script src="main.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('contactForm');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectInput = document.getElementById('subject');
+      const messageInput = document.getElementById('message');
+      const errorEl = document.getElementById('formError');
+      const submitBtn = document.getElementById('submitBtn');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!nameInput.value.trim() || !emailInput.value.trim() || !subjectInput.value.trim() || !messageInput.value.trim()) {
+          errorEl.style.display = 'block';
+          return;
+        }
+        errorEl.style.display = 'none';
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              from_name: nameInput.value.trim(),
+              from_email: emailInput.value.trim(),
+              subject: subjectInput.value.trim(),
+              message: messageInput.value.trim()
+            })
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showToast('? Message sent! I\'ll get back to you soon.', 'success');
+            form.reset();
+          } else {
+            showToast('? Something went wrong. Please try again.', 'error');
+          }
+        } catch (err) {
+          showToast('? Network error. Please try again.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message ?';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
