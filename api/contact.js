@@ -13,11 +13,18 @@ export default async function handler(req, res) {
 
   try {
     const { from_name, from_email, subject, message } = req.body || {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!from_name || !from_email || !subject || !message) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
+    if (!emailRegex.test(String(from_email).trim())) {
+      return res.status(400).json({ error: 'Invalid email format' });
+    }
+    if (!process.env.EMAILJS_SERVICE_ID || !process.env.EMAILJS_TEMPLATE_ID || !process.env.EMAILJS_PUBLIC_KEY) {
+      return res.status(500).json({ error: 'Missing EmailJS environment variables' });
+    }
     const payload = {
       service_id: process.env.EMAILJS_SERVICE_ID,
       template_id: process.env.EMAILJS_TEMPLATE_ID,
@@ -39,12 +46,19 @@ export default async function handler(req, res) {
       body: JSON.stringify(payload)
     });
 
-    if (emailJsRes.status === 200) {
+    if (emailJsRes.ok) {
       return res.status(200).json({ success: true });
     }
 
-    return res.status(500).json({ error: 'Failed to send email' });
+    const emailJsErrorText = await emailJsRes.text();
+    return res.status(500).json({
+      error: 'Failed to send email',
+      details: emailJsErrorText
+    });
   } catch (error) {
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({
+      error: 'Server error',
+      details: error?.message || 'Unknown error'
+    });
   }
 }

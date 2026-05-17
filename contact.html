@@ -39,7 +39,7 @@
         <h2 class="section-title" style="font-size:2rem;">Send a Message</h2>
         <form id="contactForm" class="form-grid" style="margin-top:16px;">
           <input id="name" class="input" type="text" placeholder="Name" />
-          <input id="email" class="input" type="email" placeholder="Email" />
+          <input id="email" class="input" type="email" placeholder="Email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" />
           <input id="subject" class="input" type="text" placeholder="Subject" />
           <textarea id="message" class="input" placeholder="Message"></textarea>
           <p id="formError" class="error-text">Please fill in all fields.</p>
@@ -66,6 +66,13 @@
           errorEl.style.display = 'block';
           return;
         }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value.trim())) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        errorEl.textContent = 'Please fill in all fields.';
         errorEl.style.display = 'none';
 
         submitBtn.disabled = true;
