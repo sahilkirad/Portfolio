@@ -98,7 +98,7 @@
           }
 
           if (response.ok && data.success) {
-            showToast('? Message sent! I\'ll get back to you soon.', 'success');
+            showToast('Message sent! I\'ll get back to you soon.', 'success');
             form.reset();
           } else {
             const detail = data.details ? ` (${String(data.details).slice(0, 140)})` : '';
