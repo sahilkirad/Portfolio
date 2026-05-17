@@ -90,26 +90,31 @@
             })
           });
 
-          const data = await response.json();
+          let data = {};
+          try {
+            data = await response.json();
+          } catch (_) {
+            data = {};
+          }
 
           if (response.ok && data.success) {
             showToast('? Message sent! I\'ll get back to you soon.', 'success');
             form.reset();
           } else {
-            showToast('? Something went wrong. Please try again.', 'error');
+            const detail = data.details ? ` (${String(data.details).slice(0, 140)})` : '';
+            showToast(`? Something went wrong. Please try again.${detail}`, 'error');
           }
         } catch (err) {
-          showToast('? Network error. Please try again.', 'error');
+          showToast(`? Network error. Please try again. (${err?.message || 'Unknown error'})`, 'error');
         } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message ?';
+          submitBtn.textContent = 'Send Message';
         }
       });
     })();
   </script>
 </body>
 </html>
-
 
 
 

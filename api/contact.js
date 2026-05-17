@@ -12,7 +12,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { from_name, from_email, subject, message } = req.body || {};
+    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const { from_name, from_email, subject, message } = body;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!from_name || !from_email || !subject || !message) {
@@ -51,11 +52,16 @@ export default async function handler(req, res) {
     }
 
     const emailJsErrorText = await emailJsRes.text();
+    console.error('EmailJS send failed', {
+      status: emailJsRes.status,
+      response: emailJsErrorText
+    });
     return res.status(500).json({
       error: 'Failed to send email',
       details: emailJsErrorText
     });
   } catch (error) {
+    console.error('Contact API server error', error);
     return res.status(500).json({
       error: 'Server error',
       details: error?.message || 'Unknown error'
