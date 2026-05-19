@@ -1,56 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Sahil Kirad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header class="navbar" data-navbar><div class="container nav-inner"><nav class="nav-links"><a class="nav-link" data-nav href="index.html">Home</a><a class="nav-link" data-nav href="projects.html">Projects</a><a class="nav-link" data-nav href="experience.html">Experience</a><a class="nav-link" data-nav href="achievements.html">Achievements</a><a class="nav-link" data-nav href="contact.html">Contact</a></nav><div class="nav-actions"><a class="btn btn-white" href="assets/Sahil_Kirad_resume.pdf" download>Resume</a><button class="menu-btn" data-menu-btn aria-label="Toggle navigation" aria-expanded="false"><i class="ti ti-menu-2"></i></button></div><div class="mobile-menu" data-mobile-menu><a data-nav href="index.html">Home</a><a data-nav href="projects.html">Projects</a><a data-nav href="experience.html">Experience</a><a data-nav href="achievements.html">Achievements</a><a data-nav href="contact.html">Contact</a><a class="btn btn-white" href="assets/Sahil_Kirad_resume.pdf" download>Resume</a></div></div></header>
+  <header class="navbar" data-navbar>
+    <div class="container nav-inner">
+      <nav class="nav-links"><a class="nav-link" data-nav href="index.html">Home</a><a class="nav-link" data-nav
+          href="projects.html">Projects</a><a class="nav-link" data-nav href="experience.html">Experience</a><a
+          class="nav-link" data-nav href="achievements.html">Achievements</a><a class="nav-link" data-nav
+          href="contact.html">Contact</a></nav>
+      <div class="nav-actions"><a class="btn btn-white" href="assets/Sahil_Kirad_resume.pdf" download>Resume</a><button
+          class="menu-btn" data-menu-btn aria-label="Toggle navigation" aria-expanded="false"><i
+            class="ti ti-menu-2"></i></button></div>
+      <div class="mobile-menu" data-mobile-menu><a data-nav href="index.html">Home</a><a data-nav
+          href="projects.html">Projects</a><a data-nav href="experience.html">Experience</a><a data-nav
+          href="achievements.html">Achievements</a><a data-nav href="contact.html">Contact</a><a class="btn btn-white"
+          href="assets/Sahil_Kirad_resume.pdf" download>Resume</a></div>
+    </div>
+  </header>
   <main class="main-offset">
-    <section class="page-header"><div class="container fade-up"><h1>Projects</h1><p>Things I've built from research prototypes to production systems</p></div></section>
-    <section class="section"><div class="container fade-up">
-      <div class="filters"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="ai">AI/LLM</button><button class="filter-btn" data-filter="backend">Backend</button><button class="filter-btn" data-filter="cloud">Cloud</button><button class="filter-btn" data-filter="fullstack">Full Stack</button></div>
-      <div class="project-row">
-        <article class="card project-card" data-cats="ai backend fullstack"><div class="project-head"><h3>CodeGuard: AI Code Review System</h3><span class="project-date">2025</span></div><ul><li>Developed an automated PR analysis system using QLoRA fine-tuning, improving bug detection accuracy over baseline models</li><li>Integrated RAG with Pinecone and leveraged LangGraph for asynchronous processing of large-scale repositories</li></ul><div class="tag-row"><span class="tag tag-dark">Qwen2.5</span><span class="tag tag-light">QLoRA</span><span class="tag tag-light">LangGraph</span><span class="tag tag-light">RAG</span><span class="tag tag-light">FastAPI</span><span class="tag tag-light">Pinecone</span></div></article>
-        <article class="card project-card" data-cats="ai cloud fullstack"><div class="project-head"><h3>VeritasAI: Agentic Investment Platform</h3><span class="project-date">2025</span></div><ul><li>Built an agentic due diligence platform reducing startup evaluation time and enabling faster decision-making using Gemini-based workflows</li><li>Optimized infrastructure with Cloud Run and Pub/Sub to handle concurrent requests with low latency</li></ul><div class="tag-row"><span class="tag tag-dark">Vertex AI</span><span class="tag tag-light">Cloud Run</span><span class="tag tag-light">Pub/Sub</span><span class="tag tag-light">Next.js</span><span class="tag tag-light">GCP</span></div></article>
-        <article class="card project-card" data-cats="ai backend cloud fullstack"><div class="project-head"><h3>Support Ticket Classifier & Auto-Router</h3><span class="project-date">2026</span></div><ul><li>Built an end-to-end MLOps system to classify support tickets by category and urgency with confidence-based auto-routing and human-in-the-loop workflows</li><li>Implemented retraining pipelines with MLflow tracking and feedback-driven learning for continuous model improvement</li></ul><div class="tag-row"><span class="tag tag-dark">FastAPI</span><span class="tag tag-light">Next.js</span><span class="tag tag-light">PostgreSQL</span><span class="tag tag-light">MLflow</span><span class="tag tag-light">Docker</span><span class="tag tag-light">AWS</span></div></article>
-        <article class="card project-card" data-cats="ai backend fullstack"><div class="project-head"><h3>NexusAI: Recommendation Engine</h3><span class="project-date">2025</span></div><ul><li>Architected a recommendation API with explainable reasoning via LangChain, improving simulated user engagement metrics</li><li>Integrated Redis caching and a business rule dashboard to reduce latency in high-traffic environments</li></ul><div class="tag-row"><span class="tag tag-dark">Python</span><span class="tag tag-light">FastAPI</span><span class="tag tag-light">LangChain</span><span class="tag tag-light">Redis</span><span class="tag tag-light">PostgreSQL</span></div></article>
+    <section class="page-header">
+      <div class="container fade-up">
+        <h1>Projects</h1>
+        <p>Things I've built from research prototypes to production systems</p>
       </div>
-    </div></section>
+    </section>
+    <section class="section">
+      <div class="container fade-up">
+
+        <div class="project-row">
+          <article class="card project-card" data-cats="ai backend fullstack">
+            <div class="project-head">
+              <h3>CodeGuard: AI Code Review System</h3><span class="project-date">2025</span>
+            </div>
+            <ul>
+              <li>Developed an automated PR analysis system using QLoRA fine-tuning, improving bug detection accuracy
+                over baseline models</li>
+              <li>Integrated RAG with Pinecone and leveraged LangGraph for asynchronous processing of large-scale
+                repositories</li>
+            </ul>
+            <div class="tag-row"><span class="tag tag-dark">Qwen2.5</span><span class="tag tag-light">QLoRA</span><span
+                class="tag tag-light">LangGraph</span><span class="tag tag-light">RAG</span><span
+                class="tag tag-light">FastAPI</span><span class="tag tag-light">Pinecone</span></div>
+          </article>
+          <article class="card project-card" data-cats="ai cloud fullstack">
+            <div class="project-head">
+              <h3>VeritasAI: Agentic Investment Platform</h3><span class="project-date">2025</span>
+            </div>
+            <ul>
+              <li>Built an agentic due diligence platform reducing startup evaluation time and enabling faster
+                decision-making using Gemini-based workflows</li>
+              <li>Optimized infrastructure with Cloud Run and Pub/Sub to handle concurrent requests with low latency
+              </li>
+            </ul>
+            <div class="tag-row"><span class="tag tag-dark">Vertex AI</span><span class="tag tag-light">Cloud
+                Run</span><span class="tag tag-light">Pub/Sub</span><span class="tag tag-light">Next.js</span><span
+                class="tag tag-light">GCP</span></div>
+          </article>
+          <article class="card project-card" data-cats="ai backend cloud fullstack">
+            <div class="project-head">
+              <h3>Support Ticket Classifier & Auto-Router</h3><span class="project-date">2026</span>
+            </div>
+            <ul>
+              <li>Built an end-to-end MLOps system to classify support tickets by category and urgency with
+                confidence-based auto-routing and human-in-the-loop workflows</li>
+              <li>Implemented retraining pipelines with MLflow tracking and feedback-driven learning for continuous
+                model improvement</li>
+            </ul>
+            <div class="tag-row"><span class="tag tag-dark">FastAPI</span><span
+                class="tag tag-light">Next.js</span><span class="tag tag-light">PostgreSQL</span><span
+                class="tag tag-light">MLflow</span><span class="tag tag-light">Docker</span><span
+                class="tag tag-light">AWS</span></div>
+          </article>
+          <article class="card project-card" data-cats="ai backend fullstack">
+            <div class="project-head">
+              <h3>NexusAI: Recommendation Engine</h3><span class="project-date">2025</span>
+            </div>
+            <ul>
+              <li>Architected a recommendation API with explainable reasoning via LangChain, improving simulated user
+                engagement metrics</li>
+              <li>Integrated Redis caching and a business rule dashboard to reduce latency in high-traffic environments
+              </li>
+            </ul>
+            <div class="tag-row"><span class="tag tag-dark">Python</span><span class="tag tag-light">FastAPI</span><span
+                class="tag tag-light">LangChain</span><span class="tag tag-light">Redis</span><span
+                class="tag tag-light">PostgreSQL</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><div class="footer-links"><a href="https://www.linkedin.com/in/sahil-kirad-288ab228a" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/sahilkirad" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:kiradsahil882@gmail.com">Email</a></div><p class="footer-copy">2026 Sahil Kirad. All rights reserved.</p></div></footer>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-links"><a href="https://www.linkedin.com/in/sahil-kirad-288ab228a" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/sahilkirad" target="_blank"
+          rel="noopener noreferrer">GitHub</a><a href="mailto:kiradsahil882@gmail.com">Email</a></div>
+      <p class="footer-copy">2026 Sahil Kirad. All rights reserved.</p>
+    </div>
+  </footer>
   <script src="main.js"></script>
-  <script>
-    (function () {
-      const buttons = document.querySelectorAll('[data-filter]');
-      const cards = document.querySelectorAll('.project-card');
-      buttons.forEach((btn) => {
-        btn.addEventListener('click', function () {
-          buttons.forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
-          const f = btn.getAttribute('data-filter');
-          cards.forEach((card) => {
-            if (f === 'all') {
-              card.style.display = '';
-            } else {
-              const cats = card.getAttribute('data-cats') || '';
-              card.style.display = cats.includes(f) ? '' : 'none';
-            }
-          });
-        });
-      });
-    })();
-  </script>
+
 </body>
+
 </html>
-
-
-
-
-
